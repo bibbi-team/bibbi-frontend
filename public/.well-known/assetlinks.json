@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.no5ing.bbibbi",
+    "sha256_cert_fingerprints":
+    ["27:34:43:0B:40:6C:F6:31:99:D8:69:94:FA:B3:44:6E:6F:3B:83:0C:CE:25:C1:C8:2A:2C:13:82:AD:BD:68:D4"]
+  }
+}]
