@@ -6,8 +6,23 @@ import {ArticleJsonLd, DefaultSeo} from "next-seo";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'No5Ing',
-  description: 'Don\'t 5ing on development',
+  title: '삐삐',
+  description: '가족 일상공유 어플리케이션',
+  openGraph: {
+    title: '삐삐 - 가족 초대 링크가 도착했어요',
+    description: '입장하고 일상공유를 시작해보세요',
+    url: 'https://no5ing.kr',
+    siteName: 'BbiBbi',
+    images: [
+      {
+        url: 'https://no5ing.kr/og_image.png',
+        width: 800,
+        height: 400,
+      }
+    ],
+    locale: 'ko_KR',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
