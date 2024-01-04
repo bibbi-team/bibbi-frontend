@@ -17,6 +17,6 @@ export default function TopHeader({title}: { title: string }) {
     <a className={"text-center text-base text-white"}>
       {title}
     </a>
-    <div/>
+    <div className={"w-8"}/>
   </div>
 }
