@@ -5,7 +5,10 @@ import {MouseEventHandler} from "react";
 
 export default function TopHeader({title}: { title: string }) {
   const onReturn: MouseEventHandler = (e) => {
-    history.back();
+    const unknownWindow = ((window as unknown) as any);
+    if(unknownWindow.android) {
+      unknownWindow.android.goBack()
+    }
   }
   return <div className={"flex flex-row justify-between items-center w-screen py-3"} onClick={onReturn}>
     <div className={"px-3"}>
