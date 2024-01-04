@@ -136,7 +136,7 @@ export default function Page() {
       <div className={"h-4"}/>
       <a className={"text-gray-400"}>개인정보 처리방침</a>
       <div className={"h-4"}/>
-      <div className={"text-sm"}>
+      <div className={"text-sm text-white"}>
         <a dangerouslySetInnerHTML={{ __html: body }}/>
       </div>
     </div>
