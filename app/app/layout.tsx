@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './app.css'
 import {ArticleJsonLd} from "next-seo";
 const { config } = require('@fortawesome/fontawesome-svg-core');

@@ -1,4 +1,5 @@
 import TopHeader from "@/components/TopHeader";
+import {Metadata} from "next";
 
 const body = `
   ‘삐삐' 서비스는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.<br/><br/>
@@ -128,6 +129,11 @@ const body = `
   
   이 개인정보처리방침은 0000년 0월 0일부터 적용됩니다.<br/><br/><br/><br/>
 `
+
+export const metadata: Metadata = {
+  title: '개인정보처리방침 - 삐삐',
+  description: '가족 일상공유 어플리케이션',
+}
 
 export default function Page() {
   return (<div className={"flex flex-col w-screen"}>
