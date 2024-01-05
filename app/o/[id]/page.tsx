@@ -31,7 +31,7 @@ export default function Page() {
 
   }, []);
   return <div className={"flex flex-col justify-center items-center h-screen w-screen gap-8"}>
-    <Image src="/oing_icon.png" width={200} height={200} />
+    <Image src="/oing_icon.png" width={200} height={200} alt={"logo"} />
     <div className={"text-center text-lg text-gray-300"}>
       {platform == "unknown" ? <span>모바일에서만 접근할 수 있어요</span> : (platform == "ios" ? appStoreInfo : playStoreInfo)}
     </div>
