@@ -1,11 +1,10 @@
 "use client"
 import {useEffect, useState} from "react";
 import Image from "next/image";
-import {useRouter} from "next/router";
+import {usePathname} from "next/navigation";
 
 export default function Page() {
-  const router = useRouter()
-  const { id } = router.query
+  const id = usePathname().split("/").pop();
   const appStoreUrl = 'https://itunes.apple.com/kr/app/id393499958';
   const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.no5ing.bbibbi' + (id ? '&referrer='+id : '');
   const appStoreInfo = (<span>AppStore로 이동중..<br/><a href={appStoreUrl}>직접 이동하기</a></span>);
