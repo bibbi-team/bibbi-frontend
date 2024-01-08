@@ -1,12 +1,14 @@
 {
-    applinks: {
-        details: [
+    "applinks": {
+        "details": [
             {
-                appIDs: ["P9P4WJ623F.com.5ing.bibbi"],
-                components: [
-               		{
+                "appIDs": ["P9P4WJ623F.com.5ing.bibbi"],
+                "components": [
+                    {
+                        "/": "/o/*",
+                        "comment": "Matches any URL whose path starts with /o/"
                     }
-                ] 
+                ]
             }
         ]
     }
