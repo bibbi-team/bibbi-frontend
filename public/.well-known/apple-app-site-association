@@ -1,0 +1,13 @@
+{
+    applinks: {
+        details: [
+            {
+                appIDs: ["P9P4WJ623F.com.5ing.bibbi"],
+                components: [
+               		{
+                    }
+                ] 
+            }
+        ]
+    }
+}
