@@ -4,9 +4,8 @@
             {
                 "appIDs": ["P9P4WJ623F.com.5ing.bibbi"],
                 "components": [
-                    {
-                        "/": "*",
-                        "comment": "Matches any URL whose path starts with /o/"
+                    { 
+                        "*"
                     }
                 ]
             }
