@@ -4,7 +4,7 @@ import {Metadata} from "next";
 const body = `
   ‘삐삐' 서비스는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.<br/><br/>
   
-  이 개인정보처리방침은 0000년 0월 0일부터 적용됩니다.<br/><br/>
+  이 개인정보처리방침은 2024년 1월 9일부터 적용됩니다.<br/><br/>
   
   
   <a class="privacy-heading">① 개인정보 수집과 이용</a><br/><br/>
@@ -127,7 +127,7 @@ const body = `
   
   <a class="privacy-heading">⑭ 개인정보 처리방침 변경</a><br/><br/>
   
-  이 개인정보처리방침은 0000년 0월 0일부터 적용됩니다.<br/><br/><br/><br/>
+  이 개인정보처리방침은 2024년 1월 9일 부터 적용됩니다.<br/><br/><br/><br/>
 `
 
 export const metadata: Metadata = {
