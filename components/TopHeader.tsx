@@ -11,7 +11,7 @@ export default function TopHeader({title}: { title: string }) {
     }
   }
   return <div className={"flex flex-row justify-between items-center w-screen py-3"}>
-    {unknownWindow ? <div className={"px-3"} onClick={onReturn}>
+    {unknownWindow?.android ? <div className={"px-3"} onClick={onReturn}>
       <FontAwesomeIcon color={"blue"} icon={faChevronLeft} className={"text-white text-base"}/>
     </div> : <div className={"w-8"}/>}
     <a className={"text-center text-base text-white"}>
