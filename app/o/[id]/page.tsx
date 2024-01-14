@@ -1,7 +1,7 @@
 "use client"
 import {useEffect, useState} from "react";
 import Image from "next/image";
-import {usePathname, useRouter} from "next/navigation";
+import {usePathname} from "next/navigation";
 
 export default function Page() {
   const id = usePathname().split("/").pop();
@@ -10,7 +10,6 @@ export default function Page() {
   const appStoreInfo = (<span>AppStore로 이동중..<br/><a href={appStoreUrl}>직접 이동하기</a></span>);
   const playStoreInfo = (<span>PlayStore로 이동중..<br/><a href={playStoreUrl}>직접 이동하기</a></span>);
   const [platform, setPlatform] = useState<"unknown" | "ios" | "android">("unknown");
-  const router = useRouter();
   useEffect(() => {
     const detectPlatform = () => {
       const unknownWindow = ((window as unknown) as any);
