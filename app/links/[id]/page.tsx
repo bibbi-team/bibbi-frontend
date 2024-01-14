@@ -23,7 +23,7 @@ export default function Page() {
     <Image src="/oing_icon.png" width={200} height={200} alt={"logo"} />
     <div className={"text-center text-lg text-gray-300"}>
       {platform == "unknown" ? <span>모바일에서만 접근할 수 있어요</span> :
-          <div className={"bg-slate-500 text-gray-300 font-semibold py-3 px-6 rounded-md text-center"} onClick={() => router.push('/o/' + id)}>앱으로 이동</div>}
+          <div className={"bg-slate-500 text-gray-300 font-semibold py-3 px-6 rounded-md text-center"} onClick={() => location.href = 'https://no5ing.kr/o/'+id}>앱으로 이동</div>}
     </div>
 
   </div>;
