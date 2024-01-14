@@ -29,6 +29,10 @@ export default function Page() {
        setTimeout(() => {
          location.href = 'https://link.no5ing.kr/links/'+id;
        }, 50);
+     } else if(platform == "ios" && retry) {
+         setTimeout(() => {
+            location.href = appStoreUrl;
+         }, 50);
      }
 
   }, []);
