@@ -5,10 +5,6 @@ import {usePathname, useRouter} from "next/navigation";
 
 export default function Page() {
   const id = usePathname().split("/").pop();
-  const appStoreUrl = 'https://itunes.apple.com/kr/app/id6475082088';
-  const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.no5ing.bbibbi' + (id ? '&referrer='+id : '');
-  const appStoreInfo = (<span>AppStore로 이동중..<br/><a href={appStoreUrl}>직접 이동하기</a></span>);
-  const playStoreInfo = (<span>PlayStore로 이동중..<br/><a href={playStoreUrl}>직접 이동하기</a></span>);
   const [platform, setPlatform] = useState<"unknown" | "ios" | "android">("unknown");
   const router = useRouter();
   useEffect(() => {
@@ -22,21 +18,12 @@ export default function Page() {
 
     const platform = detectPlatform();
     setPlatform(platform);
-    if(platform == "ios") {
-      setTimeout(() => {
-        location.href = appStoreUrl;
-      }, 50);
-    } else if(platform == "android") {
-      setTimeout(() => {
-        location.href = playStoreUrl;
-      }, 50);
-    }
-
   }, []);
   return <div className={"flex flex-col justify-center items-center h-screen w-screen gap-8"}>
     <Image src="/oing_icon.png" width={200} height={200} alt={"logo"} />
     <div className={"text-center text-lg text-gray-300"}>
-      {platform == "unknown" ? <span>모바일에서만 접근할 수 있어요</span> : (platform == "ios" ? appStoreInfo : playStoreInfo)}
+      {platform == "unknown" ? <span>모바일에서만 접근할 수 있어요</span> :
+          <div className={"bg-slate-500 text-gray-300 font-semibold py-3 px-6 rounded-md text-center"} onClick={() => router.push('/o/' + id)}>앱으로 이동</div>}
     </div>
 
   </div>;
