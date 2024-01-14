@@ -10,6 +10,7 @@ export default function Page() {
   const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.no5ing.bbibbi' + (id ? '&referrer='+id : '');
   const [platform, setPlatform] = useState<"unknown" | "ios" | "android">("unknown");
   const retry = searchParams.get("retry");
+  const iosTargetUrl = retry ? appStoreUrl : 'https://no5ing.kr/o/'+id;
   useEffect(() => {
     const detectPlatform = () => {
       const unknownWindow = ((window as unknown) as any);
@@ -30,11 +31,7 @@ export default function Page() {
   }, []);
   const handleRoute = () => {
     if(platform == "ios") {
-      if(retry) {
-        location.href = appStoreUrl;
-      } else {
-        location.href = 'https://no5ing.kr/o/'+id+'?retry=1';
-      }
+      location.href = iosTargetUrl;
     } else if (platform == "android") {
       location.href = 'intent://no5ing.kr/o/'+id+'#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.no5ing.bbibbi;end';
     }
