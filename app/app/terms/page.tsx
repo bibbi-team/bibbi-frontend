@@ -77,7 +77,7 @@ const body = `
 `
 
 export const metadata: Metadata = {
-  title: '개인정보처리방침 - 삐삐',
+  title: '이용약관 - 삐삐',
   description: '가족 일상공유 어플리케이션',
 }
 
