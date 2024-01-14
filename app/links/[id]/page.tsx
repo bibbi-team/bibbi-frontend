@@ -1,12 +1,16 @@
 "use client"
 import {useEffect, useState} from "react";
 import Image from "next/image";
-import {usePathname, useRouter} from "next/navigation";
+import {usePathname, useSearchParams} from "next/navigation";
 
 export default function Page() {
   const id = usePathname().split("/").pop();
+  const searchParams = useSearchParams();
+  const appStoreUrl = 'https://itunes.apple.com/kr/app/id6475082088';
+  const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.no5ing.bbibbi' + (id ? '&referrer='+id : '');
   const [platform, setPlatform] = useState<"unknown" | "ios" | "android">("unknown");
-  const router = useRouter();
+  const retry = searchParams.get("retry");
+  const iosTargetUrl = retry ? appStoreUrl : 'https://no5ing.kr/o/'+id + '?retry=1';
   useEffect(() => {
     const detectPlatform = () => {
       const unknownWindow = ((window as unknown) as any);
@@ -18,16 +22,16 @@ export default function Page() {
 
     const platform = detectPlatform();
     setPlatform(platform);
-
     if(platform == "android") {
       setTimeout(() => {
         location.href = 'intent://no5ing.kr/o/'+id+'#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.no5ing.bbibbi;end';
       }, 50);
     }
+
   }, []);
   const handleRoute = () => {
     if(platform == "ios") {
-      location.href = 'https://no5ing.kr/o/'+id;
+      location.href = iosTargetUrl;
     } else if (platform == "android") {
       location.href = 'intent://no5ing.kr/o/'+id+'#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.no5ing.bbibbi;end';
     }
@@ -35,8 +39,7 @@ export default function Page() {
   return <div className={"flex flex-col justify-center items-center h-screen w-screen gap-8"}>
     <Image src="/oing_icon.png" width={200} height={200} alt={"logo"} />
     <div className={"text-center text-lg text-gray-300"}>
-      {platform == "unknown" ? <span>모바일에서만 접근할 수 있어요</span> :
-          <div className={"bg-slate-500 text-gray-300 font-semibold py-3 px-6 rounded-md text-center"} onClick={handleRoute}>앱으로 이동</div>}
+      {platform == "unknown" ? <span>모바일에서만 접근할 수 있어요</span> :  <div className={"bg-slate-500 text-gray-300 font-semibold py-3 px-6 rounded-md text-center"} onClick={handleRoute}>앱으로 이동</div>}
     </div>
 
   </div>;
