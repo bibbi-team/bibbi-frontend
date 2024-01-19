@@ -34,7 +34,7 @@ async function retrieveKeyFromRequest(
     const checkVersion = (input: string) => /(iPhone|iPad) OS ([1-9]*)_([1-9]*)/g.exec(input);
     const checkDevice = (input: string) => /(iPhone)/g.exec(input)?.[1] || 'unknown';
 
-    const forwarded = req.headers.get('x-forwarded-for');
+    const forwarded = req.headers.get('cf-connecting-ip');
     const detectedVersion = checkVersion(userAgent);
     const majorVersion = detectedVersion?.[2] ?? 'd';
     const minorVersion = detectedVersion?.[3] ?? 'd';
