@@ -12,13 +12,18 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "axios": "^1.6.5",
+    "bcrypt": "^5.1.1",
+    "crypto-js": "^4.2.0",
     "next": "14.0.3",
     "next-seo": "^6.4.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-fontawesome": "^1.7.1"
+    "react-fontawesome": "^1.7.1",
+    "redis": "^4.6.12"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.2.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

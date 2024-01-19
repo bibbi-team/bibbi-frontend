@@ -2,6 +2,7 @@
 import {useEffect, useState} from "react";
 import Image from "next/image";
 import {usePathname, useSearchParams} from "next/navigation";
+import axios from "axios";
 
 export default function Page() {
   const id = usePathname().split("/").pop();
@@ -31,7 +32,14 @@ export default function Page() {
        }, 50);
      } else if(platform == "ios" && retry) {
          setTimeout(() => {
-            location.href = appStoreUrl;
+             axios.post('/api/deferred', {
+                 linkId: id,
+             }).then((res) => {
+                 location.href = appStoreUrl;
+             }).catch((err) =>{
+                 console.log(err);
+                 location.href = appStoreUrl;
+             });
          }, 50);
      }
 

@@ -5,12 +5,8 @@ import {usePathname, useSearchParams} from "next/navigation";
 
 export default function Page() {
   const id = usePathname().split("/").pop();
-  const searchParams = useSearchParams();
-  const appStoreUrl = 'https://itunes.apple.com/kr/app/id6475082088';
-  const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.no5ing.bbibbi' + (id ? '&referrer='+id : '');
   const [platform, setPlatform] = useState<"unknown" | "ios" | "android">("unknown");
-  const retry = searchParams.get("retry");
-  const iosTargetUrl = retry ? appStoreUrl : 'https://no5ing.kr/o/'+id + '?retry=1';
+  const iosTargetUrl = 'https://no5ing.kr/o/'+id + '?retry=1';
   useEffect(() => {
     const detectPlatform = () => {
       const unknownWindow = ((window as unknown) as any);
