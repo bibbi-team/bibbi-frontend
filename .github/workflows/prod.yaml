@@ -6,7 +6,7 @@ on:
 env:
   ENVIRONMENT: production
   IMAGE_NAME: no5ing/webview-was
-  SERVICE_NAME: webview-prod
+  SERVICE_NAME: webview-prod_webview-prod
 
 concurrency:
   group: production
