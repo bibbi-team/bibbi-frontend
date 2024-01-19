@@ -41,7 +41,7 @@ async function retrieveKeyFromRequest(
     const device = checkDevice(userAgent);
     const identifier = forwarded + majorVersion + minorVersion + device;
 
-    const key = process.env.ENC_KEY;
+    const key = process.env.ENC_KEY || '';
     const dataWA = identifier;
     const keyWA = enc.Utf8.parse(key);
     const ivWA = enc.Utf8.parse(key.substring(0, 16));
