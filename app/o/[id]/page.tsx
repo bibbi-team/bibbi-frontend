@@ -29,18 +29,16 @@ export default function Page() {
        setTimeout(() => {
          location.href = 'https://link.no5ing.kr/links/'+id;
        }, 50);
-     } 
-     // else if(platform == "ios" && retry) {
-     //     setTimeout(() => {
-     //        location.href = appStoreUrl;
-     //     }, 50);
-     // }
+     } else if(platform == "ios" && retry) {
+         setTimeout(() => {
+            location.href = appStoreUrl;
+         }, 50);
+     }
 
   }, []);
   const handleRoute = () => {
     if(platform == "ios") {
-      // location.href = retry ? appStoreUrl : 'https://no5ing.kr/o/'+id + '?retry=1';
-      location.href = 'https://no5ing.kr/o/'+id
+      location.href = retry ? appStoreUrl : 'https://no5ing.kr/o/'+id + '?retry=1';
     } else if (platform == "android") {
       location.href = 'intent://no5ing.kr/o/'+id+'#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.no5ing.bbibbi;end';
     }
