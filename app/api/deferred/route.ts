@@ -41,6 +41,7 @@ async function retrieveKeyFromRequest(
     const device = checkDevice(userAgent);
     const identifier = forwarded + majorVersion + minorVersion + device;
     console.log('identifier', identifier);
+    console.log(req.headers);
 
     const key = process.env.ENC_KEY || '';
     const dataWA = identifier;
