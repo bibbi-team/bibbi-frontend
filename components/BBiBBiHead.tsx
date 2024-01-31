@@ -12,6 +12,7 @@ export default function BBiBBiHead({title, description}: {title: string, descrip
             <meta name="og:image" content="https://no5ing.kr/og_image.png" />
             <meta name="og:image:width" content="800" />
             <meta name="og:image:height" content="400" />
+            <meta name="naver-site-verification" content="c99d6c53bd2b8fdf2c87f1f62b080b068f1aab65" />
         </Head>
     </>
   );
