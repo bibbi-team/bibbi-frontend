@@ -2,11 +2,16 @@ import 'react-notion-x/src/styles.css';
 import { ExtendedRecordMap } from "notion-types";
 import {NotionAPI} from "notion-client";
 import NotionPage from "@/components/NotionPage";
-
+import {Metadata} from "next";
+import Head from "next/head";
 
 export default function MainPage({ recordMap }: { recordMap: ExtendedRecordMap }) {
     if(!recordMap) return <></>
     return <>
+        <Head>
+            <title>삐삐 - 소개 페이지</title>
+            <meta name="description" content="삐삐 소개 페이지" />
+        </Head>
         <NotionPage recordMap={recordMap} />
     </>
 }

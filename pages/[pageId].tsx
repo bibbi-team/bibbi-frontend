@@ -5,6 +5,7 @@ import { ExtendedRecordMap } from 'notion-types'
 import {NotionAPI} from "notion-client";
 import NotionPage from "@/components/NotionPage";
 import {GetStaticPropsContext} from "next";
+import Head from "next/head";
 
 
 const rootNotionPageId = 'Bibbi-c3dd457b32564f369c1a08c42c0ab00e';
@@ -34,5 +35,11 @@ export async function getStaticPaths() {
 }
 
 export default function Page({ recordMap }: { recordMap: ExtendedRecordMap }) {
-    return <NotionPage recordMap={recordMap} />
+    return <>
+        <Head>
+            <title>삐삐 - 소개 페이지</title>
+            <meta name="description" content="삐삐 소개 페이지" />
+        </Head>
+        <NotionPage recordMap={recordMap} />
+    </>
 }
