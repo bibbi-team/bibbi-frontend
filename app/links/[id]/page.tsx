@@ -3,12 +3,14 @@ import {useEffect, useState} from "react";
 import Image from "next/image";
 import bbibbiMain from '../../../public/bbibbi_main.svg'
 import {usePathname, useSearchParams} from "next/navigation";
+import {analytics} from "@/firebase/firebase";
 
 export default function Page() {
   const id = usePathname()?.split("/")?.pop();
   const [platform, setPlatform] = useState<"unknown" | "ios" | "android">("unknown");
   const iosTargetUrl = 'https://no5ing.kr/o/'+id + '?retry=1';
   useEffect(() => {
+    analytics;
     const detectPlatform = () => {
       const unknownWindow = ((window as unknown) as any);
       const userAgent = navigator.userAgent || navigator.vendor || unknownWindow.opera;

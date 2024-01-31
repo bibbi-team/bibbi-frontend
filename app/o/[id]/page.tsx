@@ -4,6 +4,7 @@ import Image from "next/image";
 import bbibbiMain from '../../../public/bbibbi_main.svg'
 import {usePathname, useSearchParams} from "next/navigation";
 import axios from "axios";
+import {analytics} from "@/firebase/firebase";
 
 export default function Page() {
   const id = usePathname()?.split("/")?.pop();
@@ -13,6 +14,7 @@ export default function Page() {
   const [platform, setPlatform] = useState<"unknown" | "ios" | "android">("unknown");
   const retry = searchParams?.get("retry");
   useEffect(() => {
+      analytics;
     const detectPlatform = () => {
       const unknownWindow = ((window as unknown) as any);
       const userAgent = navigator.userAgent || navigator.vendor || unknownWindow.opera;
