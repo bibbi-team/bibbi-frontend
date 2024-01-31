@@ -17,9 +17,12 @@
     "crypto-js": "^4.2.0",
     "next": "14.0.3",
     "next-seo": "^6.4.0",
+    "notion-client": "^6.16.0",
+    "notion-types": "^6.16.0",
     "react": "^18",
     "react-dom": "^18",
     "react-fontawesome": "^1.7.1",
+    "react-notion-x": "^6.16.0",
     "redis": "^4.6.12"
   },
   "devDependencies": {
