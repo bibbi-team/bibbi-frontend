@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
+import "./layout.css"
 import {ArticleJsonLd, DefaultSeo} from "next-seo";
-
-const inter = Inter({ subsets: ['latin'] })
-
 export const metadata: Metadata = {
   title: '삐삐',
   description: '가족 일상공유 어플리케이션',
@@ -50,7 +47,7 @@ export default function RootLayout({
         />
       </head>
 
-      <body suppressHydrationWarning={true} className={inter.className}>{children}</body>
+      <body suppressHydrationWarning={true}>{children}</body>
     </html>
   )
 }
