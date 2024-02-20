@@ -18,6 +18,8 @@ import NewHat from "@/assets/new_hat.png";
 import Image from "next/image";
 import Link from "next/link";
 
+import {detectPlatform} from "@/src/util";
+
 export default function MainPage() {
     const [scrollY, setScrollY] = useState(0);
     const [appDownloadUrl, setAppDownloadUrl] = useState("/");
@@ -26,6 +28,13 @@ export default function MainPage() {
         setScrollY(pageYOffset);
     }, []);
     useEffect(() => {
+        const platform = detectPlatform();
+        if (platform === "ios") {
+            setAppDownloadUrl("https://itunes.apple.com/kr/app/id6475082088");
+        } else if(platform === "android") {
+            setAppDownloadUrl("https://play.google.com/store/apps/details?id=com.no5ing.bbibbi");
+        }
+
         const { pageYOffset } = window;
         setScrollY(pageYOffset);
         window.addEventListener("scroll", onScroll, { passive: true });
