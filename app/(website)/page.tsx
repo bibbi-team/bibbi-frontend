@@ -1,7 +1,7 @@
 "use client"
 import NavigationBar from "@/components/layout/NavigationBar";
 import React, {useCallback, useEffect, useState} from "react";
-import "./layout.css";
+import "../layout.css";
 import FooterBar from "@/components/layout/FooterBar";
 import {motion} from "framer-motion"
 import LandingFirstBibbi from "@/assets/landing_first_bibbi.svg?url";
@@ -48,10 +48,6 @@ export default function MainPage() {
     setIsNavBarFull(scrollY > 100);
   }, [scrollY]);
   return <div>
-    <header className={"fixed z-40 top-0"}>
-      <NavigationBar isFull={isNavBarFull} appDownloadUrl={appDownloadUrl}/>
-    </header>
-
     <div className={"flex flex-col justify-start items-start"}>
       <FirstSlide appDownloadUrl={appDownloadUrl}/>
       <SecondSlide/>
@@ -63,10 +59,6 @@ export default function MainPage() {
       <LastSlide/>
       <TotoSlide/>
     </div>
-
-    <footer>
-      <FooterBar/>
-    </footer>
   </div>
 }
 

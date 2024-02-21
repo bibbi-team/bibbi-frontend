@@ -1,9 +1,23 @@
+"use client"
 import "../global.css";
 import PageLogo from '@/assets/bibbi_logo.svg'
 import * as React from "react";
-import {motion, AnimatePresence, AnimateSharedLayout, LayoutGroup} from "framer-motion"
+import {motion, LayoutGroup} from "framer-motion"
 import Link from "next/link";
-export default function NavigationBar({isFull, appDownloadUrl}: {isFull: boolean, appDownloadUrl: string}) {
+import {useEffect, useState} from "react";
+import {detectPlatform} from "@/src/util";
+import {analytics} from "@/firebase/firebase";
+export default function NavigationBar({isFull}: {isFull: boolean}) {
+    const [appDownloadUrl, setAppDownloadUrl] = useState("/");
+    useEffect(() => {
+        analytics;
+        const platform = detectPlatform();
+        if (platform === "ios") {
+            setAppDownloadUrl("https://itunes.apple.com/kr/app/id6475082088");
+        } else if (platform === "android") {
+            setAppDownloadUrl("https://play.google.com/store/apps/details?id=com.no5ing.bbibbi");
+        }
+    }, []);
    return <LayoutGroup>
        {isFull &&
            <motion.div
@@ -27,7 +41,9 @@ export default function NavigationBar({isFull, appDownloadUrl}: {isFull: boolean
 function FullNavigationBar({appDownloadUrl}: {appDownloadUrl: string}) {
     return <div className={"flex justify-between items-center w-screen bg-a39d text-white py-3.5 px-5 z-20"}>
         <div className={"flex gap-4 items-center"}>
-            <PageLogo className={"fill-s938f"}/>
+            <Link href={"/"}>
+                <PageLogo className={"fill-s938f"}/>
+            </Link>
         </div>
         <div className={"flex gap-4 items-center"}>
             <Link href={appDownloadUrl}>
@@ -40,7 +56,9 @@ function FullNavigationBar({appDownloadUrl}: {appDownloadUrl: string}) {
 function TitledNavigationBar() {
     return <div className={"flex justify-between items-center w-screen text-white py-3.5 px-5 z-20"}>
         <div className={"flex gap-4 items-center"}>
-            <PageLogo className={"fill-s1938f33"}/>
+            <Link href={"/"}>
+                <PageLogo className={"fill-s1938f33"}/>
+            </Link>
         </div>
         <div className={"flex gap-4 items-center"}>
             <div className={"h-8"}/>
