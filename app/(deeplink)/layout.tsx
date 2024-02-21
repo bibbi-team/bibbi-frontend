@@ -3,6 +3,7 @@ import '../globals.css'
 import "../layout.css"
 import {ArticleJsonLd} from "next-seo";
 import React from "react";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 export const metadata: Metadata = {
   title: '삐삐',
   description: '가족 일상공유 어플리케이션',
@@ -46,6 +47,7 @@ export default function RootLayout({
             ]
           }
         />
+        <GoogleAnalytics/>
       </head>
 
       <body suppressHydrationWarning={true}>

@@ -6,11 +6,10 @@ import {motion, LayoutGroup} from "framer-motion"
 import Link from "next/link";
 import {useEffect, useState} from "react";
 import {detectPlatform} from "@/src/util";
-import {analytics} from "@/firebase/firebase";
+
 export default function NavigationBar({isFull}: {isFull: boolean}) {
     const [appDownloadUrl, setAppDownloadUrl] = useState("/");
     useEffect(() => {
-        analytics;
         const platform = detectPlatform();
         if (platform === "ios") {
             setAppDownloadUrl("https://itunes.apple.com/kr/app/id6475082088");

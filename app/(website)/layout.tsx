@@ -5,6 +5,7 @@ import {ArticleJsonLd} from "next-seo";
 import NavigationBar from "@/components/layout/NavigationBar";
 import React from "react";
 import FooterBar from "@/components/layout/FooterBar";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 export const metadata: Metadata = {
   title: '삐삐',
   description: '가족 일상공유 어플리케이션',
@@ -48,6 +49,7 @@ export default function RootLayout({
             ]
           }
         />
+        <GoogleAnalytics/>
       </head>
 
       <body suppressHydrationWarning={true}>
