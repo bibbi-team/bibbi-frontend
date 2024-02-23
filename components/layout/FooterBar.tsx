@@ -38,7 +38,7 @@ function ExternalLinks() {
                 <InstagramIcon />
             </Link>
 
-            <Link href={"https://github.com/depromeet"}>
+            <Link href={"https://github.com/bibbi-team"}>
                 <GithubIcon />
             </Link>
 
