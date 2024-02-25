@@ -2,13 +2,13 @@ import {FirebaseApp, getApps, initializeApp} from "firebase/app";
 import {Analytics, getAnalytics, isSupported} from "firebase/analytics";
 
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-    appId: process.env.NEXT_PUBLIC_APP_ID,
-    storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
-    measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
+    apiKey: "AIzaSyCKPyiGEuvSgwELe3vNyWfyJZrl6zw2s9I",
+    authDomain: "bbibbi-webview.firebaseapp.com",
+    projectId: "bbibbi-webview",
+    appId: "1:505850740732:web:5d8eb8d36523b7c5e3fc79",
+    storageBucket: "bbibbi-webview.appspot.com",
+    messagingSenderId: "505850740732",
+    measurementId: "G-QWXVZND9NW",
 };
 let app: FirebaseApp;
 let analytics: Analytics;
