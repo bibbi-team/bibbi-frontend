@@ -9,7 +9,7 @@ import {detectPlatform} from "@/src/util";
 import {useViewPortDetector} from "@/components/WindowDimensions";
 
 export default function NavigationBar({isFull}: {isFull: boolean}) {
-    const [appDownloadUrl, setAppDownloadUrl] = useState("/");
+    const [appDownloadUrl, setAppDownloadUrl] = useState("/download");
     const isMobile = useViewPortDetector();
     useEffect(() => {
         const platform = detectPlatform();

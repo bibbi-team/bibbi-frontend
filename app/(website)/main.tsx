@@ -24,7 +24,7 @@ import { useViewPortDetector } from "@/components/WindowDimensions";
 export default function Main() {
     const [scrollY, setScrollY] = useState(0);
     const isMobile = useViewPortDetector();
-    const [appDownloadUrl, setAppDownloadUrl] = useState("/");
+    const [appDownloadUrl, setAppDownloadUrl] = useState("/download");
     const onScroll = useCallback(() => {
         const {pageYOffset} = window;
         setScrollY(pageYOffset);
