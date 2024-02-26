@@ -50,8 +50,14 @@ export default function RootLayout({
         <GoogleAnalytics/>
       </head>
 
-      <body suppressHydrationWarning={true}>
-        <main>
+      <body suppressHydrationWarning={true} style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        overflowX: "hidden",
+      }}>
+        <main className={"grow h-full"}>
           {children}
         </main>
         <footer>

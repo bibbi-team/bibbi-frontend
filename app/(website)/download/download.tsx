@@ -11,9 +11,8 @@ export default function Download() {
             <NavigationBar isFull={true}/>
         </header>
         <BBiBBiHead title={"삐삐 - 다운로드"} description={"삐삐를 다운로드해요"}/>
-        <div>
-            <div className={"flex flex-col justify-start items-start py-40 pt-48"}>
-                <div className={"flex flex-col justify-center items-center h-50vw w-screen gap-8"}>
+        <div className={"absolute h-full flex flex-col justify-center items-center "}>
+                <div className={"flex flex-col justify-center items-center w-screen gap-8 pb-24 "}>
                     <div className="profile-image">
                         <Link href="/">
                             <img width={300}
@@ -22,7 +21,7 @@ export default function Download() {
                         </Link>
                     </div>
                     <div className="pt-3 flex flex-col justify-center items-center">
-                        <h1 className="text-gray-300 text-2xl">삐삐 - 가족 일상 위젯</h1>
+                        <h1 className="text-gray-300 text-2xl font-semibold">삐삐 - 가족 일상 위젯</h1>
                         <p className="text-gray-300 text-xl pt-3">하루에 한 번 가족에게 보내는 생존신고 서비스</p>
                         <div className={"flex flex-row justify-center items-center pt-8 gap-3"}>
                             <Link
@@ -35,7 +34,7 @@ export default function Download() {
                         </div>
                     </div>
                 </div>
-            </div>
+
         </div>
     </>
 }
