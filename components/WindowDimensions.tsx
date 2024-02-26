@@ -26,7 +26,7 @@ export default function useWindowDimensions() {
 }
 
 export function useViewPortDetector() {
-    const { _, width } = useWindowDimensions();
+    const { height, width } = useWindowDimensions();
     const [isMobile, setIsMobile] = useState(width < 650);
     useEffect(() => {
         setIsMobile(width < 650);
