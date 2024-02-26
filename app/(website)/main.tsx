@@ -44,9 +44,6 @@ export default function Main() {
             window.removeEventListener("scroll", onScroll);
         }
     }, []);
-    useEffect(() => {
-        console.log("isMobile", isMobile)
-    }, [isMobile]);
 
     const [isNavBarFull, setIsNavBarFull] = useState(false);
 
