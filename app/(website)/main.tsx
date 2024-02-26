@@ -121,8 +121,8 @@ function SecondSlide({isMobile}: { isMobile: boolean}) {
             initial="hidden"
             whileInView="visible"
             viewport={{once: true}}
-            className={isMobile ? "flex flex-col justify-between items-start w-screen text-white py-16 px-8 bg-19191a"
-                : "flex flex-row justify-between items-center text-white py-20 px-16 bg-19191a max-w-screen-xl mx-auto w-full pt-48"}
+            className={isMobile ? "flex flex-col justify-between items-start w-screen text-white py-16 px-8"
+                : "flex flex-row justify-between items-center text-white py-20 px-16 max-w-screen-xl mx-auto w-full pt-48"}
             transition={{
                 delay: 0.5,
                 duration: 1.0
