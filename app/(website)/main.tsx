@@ -59,11 +59,11 @@ export default function Main() {
             <SecondSlide isMobile={isMobile}/>
             <ThirdSlide isMobile={isMobile}/>
             <FourthSlide isMobile={isMobile}/>
-            <FifthSlide/>
-            <SixthSlide/>
-            <Las2tSlide/>
-            <LastSlide/>
-            <TotoSlide/>
+            <FifthSlide isMobile={isMobile}/>
+            <SixthSlide isMobile={isMobile}/>
+            <Las2tSlide isMobile={isMobile}/>
+            <LastSlide isMobile={isMobile}/>
+            <TotoSlide isMobile={isMobile}/>
         </div>
     </>
 }
@@ -206,44 +206,65 @@ function ThirdSlide({isMobile}: { isMobile: boolean}) {
 }
 
 function FourthSlide({isMobile}: { isMobile: boolean}) {
-    return (<div className={"flex flex-col justify-between items-start w-screen text-white bg-f5f378  w-full"}>
-        <div className={"max-w-screen-xl mx-auto w-full"}>
-            <div className={isMobile ? "font-extrabold text-2xl text-black leading-snug pt-16 px-8 ":
-                "font-extrabold text-3xl text-black leading-snug pt-16 px-8 "}>
-                <p>
-                    하루 딱 한번의
-                </p>
-                <p>
-                    생존신고라면 어떨까요?
-                </p>
+    return (<div className={isMobile ? "flex flex-col justify-between items-start w-screen text-white bg-f5f378 w-full":
+        "w-screen text-white bg-f5f378 w-full"}>
+        <div className={isMobile? "flex flex-col justify-between items-start max-w-screen-xl mx-auto w-full" : "flex flex-row justify-between items-start max-w-screen-xl mx-auto w-full"}>
+            <div>
+                <div className={isMobile? "": "h-8"}/>
+                <div className={isMobile ? "font-extrabold text-2xl text-black leading-snug pt-16 px-8 ":
+                    "font-extrabold text-4xl text-black leading-snug pt-16 px-8 w-fit"}>
+                    <p>
+                        하루 딱 한번의
+                    </p>
+                    <p>
+                        <span>생존신고</span>라면 어떨까요?
+                    </p>
+                </div>
             </div>
-            <Image className={"w-full"} src={BibbiReportSample} alt={"bibbi_hi"}/>
+
+            <div>
+                <div className={isMobile? "": "h-5"}/>
+                <Image style={{
+                    width: isMobile ? "100%" : "36rem",
+                }} src={BibbiReportSample} alt={"bibbi_hi"}/>
+            </div>
+
         </div>
 
     </div>)
 }
 
-function FifthSlide() {
-    return (<div className={"flex flex-col justify-between items-start w-screen text-white bg-a39d w-full"}>
+function FifthSlide({isMobile}: { isMobile: boolean}) {
+    return (<div className={"w-screen text-white bg-a39d w-full"}>
         <div className={"max-w-screen-xl mx-auto w-full"}>
-            <div className={"font-extrabold text-2xl leading-snug py-16 px-8"}>
-                <p>
-                    단순히 공유하고 싶은
-                </p>
-                <p>
-                    일상을 찍고,
-                </p>
-                <p>
-                    업로드만 하면 끝이에요.
-                </p>
+            <div className={isMobile ? "flex flex-col justify-between items-start": "flex flex-row-reverse justify-between items-start pt-24"}>
+                <div className={isMobile ? "font-extrabold text-2xl leading-snug py-16 px-8" :
+                    "font-extrabold text-3xl leading-snug py-16 px-8"}>
+                    <p>
+                        단순히 공유하고 싶은
+                    </p>
+                    <p>
+                        일상을 찍고,
+                    </p>
+                    <p>
+                        업로드만 하면 끝이에요.
+                    </p>
+                </div>
+                <div>
+                    <div className={isMobile? "": "h-14"}/>
+                    <Image style={{
+                        width: isMobile ? "100%" : "40rem",
+                    }} src={BibbiShareSample} alt={"bibbi_hi"}/>
+                </div>
+
             </div>
 
-            <Image className={"w-full"} src={BibbiShareSample} alt={"bibbi_hi"}/>
         </div>
     </div>)
 }
 
-function SixthSlide() {
+function SixthSlide({isMobile}: { isMobile: boolean}) {
+    const textStyle = "font-extrabold text-2xl leading-snug py-16 px-8";
     return (<div className={"flex flex-col justify-between items-start text-white bg-19191a w-full"} style={{
         background: "url('/bibbi_matrix.svg')",
         backgroundSize: "auto 100%",
@@ -272,7 +293,7 @@ function SixthSlide() {
                 }
             }}
         >
-            <div className={"font-extrabold text-2xl leading-snug py-16 px-8"}>
+            <div className={isMobile ? "font-extrabold text-2xl leading-snug py-16 px-8" : "font-extrabold text-3xl leading-snug py-16 px-8"}>
                 <p>
                     오늘 내가 먹은
                 </p>
@@ -280,7 +301,7 @@ function SixthSlide() {
                     맛있는 밥
                 </p>
                 <div className={"h-4"}/>
-                <Image src={YummyFood} width={200} alt={"bibbi_hi"}/>
+                <Image src={YummyFood} height={isMobile? 200 : 300} width={isMobile? 200 : 300} alt={"bibbi_hi"}/>
             </div>
         </motion.div>
 
@@ -306,7 +327,8 @@ function SixthSlide() {
                 }
             }}
         >
-            <div className={"w-full flex flex-col items-end font-extrabold text-2xl leading-snug px-8 text-right"}>
+            <div className={isMobile ? "w-full flex flex-col items-end font-extrabold text-2xl leading-snug px-8 text-right":
+                "w-full flex flex-col items-end font-extrabold text-3xl leading-snug px-8 text-right"}>
                 <p>
                     친구와 함께간
                 </p>
@@ -314,7 +336,7 @@ function SixthSlide() {
                     멋진 장소
                 </p>
                 <div className={"h-4"}/>
-                <Image src={BeautifulPlace} width={200} alt={"bibbi_hi"}/>
+                <Image src={BeautifulPlace} height={isMobile? 200 : 300} width={isMobile? 200 : 300} alt={"bibbi_hi"}/>
             </div>
         </motion.div>
 
@@ -340,7 +362,8 @@ function SixthSlide() {
                 }
             }}
         >
-            <div className={"w-full flex flex-col items-start font-extrabold text-2xl leading-snug py-16 px-8 text-right"}>
+            <div className={isMobile ? "w-full flex flex-col items-start font-extrabold text-2xl leading-snug py-16 px-8 text-right"
+            :"w-full flex flex-col items-start font-extrabold text-3xl leading-snug py-16 px-8 text-right"}>
                 <p>
                     편집샵에서
                 </p>
@@ -348,34 +371,42 @@ function SixthSlide() {
                     새로 산 모자
                 </p>
                 <div className={"h-4"}/>
-                <Image src={NewHat} width={200} alt={"bibbi_hi"}/>
+                <Image src={NewHat} height={isMobile? 200 : 300} width={isMobile? 200 : 300} alt={"bibbi_hi"}/>
             </div>
         </motion.div>
 
     </div>)
 }
 
-function Las2tSlide() {
-    return (<div className={"flex flex-col justify-between items-start w-screen text-white bg-f5f378"}>
+function Las2tSlide({isMobile}: { isMobile: boolean }) {
+    return (<div className={"items-start w-screen text-white bg-f5f378"}>
         <div className={"max-w-screen-xl mx-auto w-full"}>
-            <div className={"font-extrabold text-3xl leading-snug text-black pt-16 px-8"}>
-                <p>
-                    더이상 친구들에게만
-                </p>
-                <p>
-                    공유하지 마세요!
-                </p>
+            <div className={isMobile? "flex flex-col justify-between" : "flex flex-row justify-between"}>
+                <div className={isMobile ? "font-extrabold text-3xl leading-snug text-black pt-16 px-8": "font-extrabold text-4xl leading-snug text-black pt-16 px-8"}>
+                    <p>
+                        더이상 친구들에게만
+                    </p>
+                    <p>
+                        공유하지 마세요!
+                    </p>
+                </div>
+                <div>
+                    <div className={isMobile?"":"h-24"}/>
+                    <Image style={{
+                        width: isMobile ? "100%" : "36rem",
+                    }} src={ShiningBibbi} alt={"bibbi_hi"}/>
+                </div>
+
             </div>
-            <Image className={"w-full"} src={ShiningBibbi} alt={"bibbi_hi"}/>
         </div>
     </div>)
 }
 
 
-function LastSlide() {
+function LastSlide({isMobile}: { isMobile: boolean }) {
     return (<div className={"flex flex-col justify-between items-center w-screen text-white bg-353538 z-10"}
     >
-        <div className={"font-extrabold text-2xl text-center  pt-16 px-8"}>
+        <div className={isMobile? "font-extrabold text-2xl text-center  pt-16 px-8" : "font-semibold text-4xl text-center  pt-16 px-8"}>
             <p>
                 하루에 10초만 투자하고
             </p>
@@ -397,7 +428,7 @@ function LastSlide() {
 }
 
 
-function TotoSlide() {
+function TotoSlide({isMobile}: { isMobile: boolean }) {
     return (<div className={"flex flex-col justify-between items-center w-screen text-white py-16 px-8 bg-a39d gap-6"}
                  style={{
                      background: "url('/bibbi_repeatable_background.svg')",
@@ -406,7 +437,7 @@ function TotoSlide() {
                  }}>
         <div className={"flex flex-col items-center justify-center gap-5"}>
             <Image src={BibbiCi} alt={"bibbi_ci"}/>
-            <div className={"font-extrabold text-center text-2xl leading-snug text-black"}>
+            <div className={isMobile ? "font-extrabold text-center text-2xl leading-snug text-black" : "font-extrabold text-center text-4xl leading-snug text-black"}>
                 <p>
                     지금 바로, 가족과 함께
                 </p>
@@ -418,10 +449,10 @@ function TotoSlide() {
         <div className={"flex flex-row justify-center items-center pt-8 gap-3"}>
             <Link
                 href="https://play.google.com/store/apps/details?id=com.no5ing.bbibbi&pli=1">
-                <Image height={300} width={150} src="/googleplay.png" alt={"playstore"}/>
+                <Image height={isMobile ? 300 : 400} width={isMobile ? 150 : 200} src="/googleplay.png" alt={"playstore"}/>
             </Link>
             <Link href="https://apps.apple.com/kr/app/bibbi/id6475082088">
-                <Image height={300} width={150} src="/appstore.png" alt={"appstore"}/>
+                <Image height={isMobile ? 300 : 400} width={isMobile ? 150 : 200} src="/appstore.png" alt={"appstore"}/>
             </Link>
         </div>
 
