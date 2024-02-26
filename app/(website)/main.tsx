@@ -1,7 +1,6 @@
 "use client"
 
 import React, {useCallback, useEffect, useState} from "react";
-import "../layout.css";
 import {motion} from "framer-motion"
 import LandingFirstBibbi from "@/assets/landing_first_bibbi.svg?url";
 import LandingSecondBibbi from "@/assets/landing_second_bibbi.svg?url";
@@ -17,6 +16,7 @@ import NewHat from "@/assets/new_hat.png";
 import Image from "next/image";
 import Link from "next/link";
 import {detectPlatform} from "@/src/util";
+import NavigationBar from "@/components/layout/NavigationBar";
 
 
 export default function Main() {
@@ -41,12 +41,15 @@ export default function Main() {
             window.removeEventListener("scroll", onScroll);
         }
     }, []);
-    const [isNavBarFull, setIsNavBarFull] = useState(true);
+    const [isNavBarFull, setIsNavBarFull] = useState(false);
 
     useEffect(() => {
         setIsNavBarFull(scrollY > 100);
     }, [scrollY]);
-    return <div>
+    return <>
+        <header className={"fixed z-40 top-0"}>
+            <NavigationBar isFull={isNavBarFull}/>
+        </header>
         <div className={"flex flex-col justify-start items-start"}>
             <FirstSlide appDownloadUrl={appDownloadUrl}/>
             <SecondSlide/>
@@ -58,7 +61,7 @@ export default function Main() {
             <LastSlide/>
             <TotoSlide/>
         </div>
-    </div>
+    </>
 }
 
 function FirstSlide({appDownloadUrl}: { appDownloadUrl: string }) {

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import '../globals.css'
-import "../layout.css"
+import "./layout.css"
 import {ArticleJsonLd} from "next-seo";
 import React from "react";
 import GoogleAnalytics from "@/components/GoogleAnalytics";

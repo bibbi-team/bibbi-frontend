@@ -1,5 +1,5 @@
 import React from "react";
-import "../webview.css";
+import "./webview.css";
 
 export default function RootLayout({
   children,

@@ -1,5 +1,4 @@
 import React from "react";
-import "../layout.css";
 import {Metadata} from "next";
 import Main from "@/app/(website)/main";
 

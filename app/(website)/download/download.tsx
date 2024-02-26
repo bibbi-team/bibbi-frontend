@@ -3,9 +3,13 @@ import BBiBBiHead from "@/components/BBiBBiHead";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import NavigationBar from "@/components/layout/NavigationBar";
 
 export default function Download() {
     return <>
+        <header className={"fixed z-40 top-0"}>
+            <NavigationBar isFull={true}/>
+        </header>
         <BBiBBiHead title={"삐삐 - 다운로드"} description={"삐삐를 다운로드해요"}/>
         <div>
             <div className={"flex flex-col justify-start items-start py-40 pt-48"}>

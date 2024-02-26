@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
-import '../globals.css'
-import "../layout.css"
+import "./layout.css"
 import {ArticleJsonLd} from "next-seo";
-import NavigationBar from "@/components/layout/NavigationBar";
 import React from "react";
 import FooterBar from "@/components/layout/FooterBar";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -53,10 +51,9 @@ export default function RootLayout({
       </head>
 
       <body suppressHydrationWarning={true}>
-        <header className={"fixed z-40 top-0"}>
-          <NavigationBar isFull={true}/>
-        </header>
+        <main>
           {children}
+        </main>
         <footer>
           <FooterBar/>
         </footer>
