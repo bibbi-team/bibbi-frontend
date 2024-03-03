@@ -17,13 +17,13 @@ export default function FooterBar() {
                 </div>
                 <div className={"h-7"}/>
                 <div className={"flex flex-col justify-start text-xs gap-1.5 underline"}>
-                    <Link href={"/0ed00a05cf74414898b8dbff7614683f"}>
+                    <Link href={"/0ed00a05cf74414898b8dbff7614683f"} title={"update"}>
                         <p>업데이트 소식</p>
                     </Link>
-                    <Link href={"/25c80b13d89c4fefb908867b74bf6aa9"}>
+                    <Link href={"/terms"} title={"terms"}>
                         <p>삐삐 이용 약관</p>
                     </Link>
-                    <Link href={"/5a00bd90c7674a7e8413901334ee1b24"}>
+                    <Link href={"/privacy"} title={"privacy"}>
                         <p>개인정보 처리방침</p>
                     </Link>
                 </div>
@@ -35,16 +35,16 @@ export default function FooterBar() {
 function ExternalLinks() {
     return (
         <div className={"flex flex-row gap-4 justify-end"}>
-            <Link href={"https://www.instagram.com/bibbi_family"}>
+            <Link href={"https://www.instagram.com/bibbi_family"} title={"instagram"}>
                 <InstagramIcon />
             </Link>
 
-            <Link href={"https://github.com/bibbi-team"}>
+            <Link href={"https://github.com/bibbi-team"} title={"github"}>
                 <GithubIcon />
             </Link>
 
 
-            <Link href={"https://www.behance.net/gallery/191508405/_"}>
+            <Link href={"https://www.behance.net/gallery/191508405/_"} title={"behance"}>
                 <BehanceIcon />
             </Link>
         </div>
