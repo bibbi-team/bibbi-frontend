@@ -27,7 +27,6 @@
     "react-dom": "^18",
     "react-fontawesome": "^1.7.1",
     "react-notion-x": "^6.16.0",
-    "redis": "^4.6.12",
     "sharp": "^0.33.2"
   },
   "devDependencies": {

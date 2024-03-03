@@ -1,5 +1,7 @@
 import { AES, enc } from 'crypto-js';
-import redisClient from '../../../redis';
+import { collection, addDoc, doc, getDoc } from "firebase/firestore";
+import {firestore} from "@/firebase/firebase";
+
 
 export async function POST(
     req: Request,
@@ -10,8 +12,9 @@ export async function POST(
             const linkId = res.linkId;
             const encryptedData = await retrieveKeyFromRequest(req);
             console.log('encryptedData', encryptedData , 'linkId', linkId);
-            // @ts-ignore
-            redisClient.set('deferred.'+encryptedData, linkId, 'EX', 3600);
+            addDoc(collection(firestore, "deferred", encryptedData), {
+                linkId: linkId,
+            });
         }catch(e) {
             console.log(e);
         }
@@ -23,8 +26,9 @@ export async function GET(
     req: Request
 ) {
     const encryptedData = await retrieveKeyFromRequest(req);
-    const linkId = await redisClient.get('deferred.'+encryptedData);
-    return Response.json({ linkId: linkId });
+    const linkId = await getDoc(doc(firestore,"deferred",encryptedData));
+    const data = (linkId.data as unknown) as any
+    return Response.json({ linkId: data?.linkId });
 }
 
 async function retrieveKeyFromRequest(

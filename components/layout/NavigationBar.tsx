@@ -43,7 +43,7 @@ function FullNavigationBar({appDownloadUrl, isMobile}: {appDownloadUrl: string, 
     return <div className={"flex flex-row justify-between items-center w-screen bg-a39d text-white py-3.5 px-5 z-20 "}>
         <div className={"max-w-screen-xl mx-auto w-full flex flex-row justify-between items-center"}>
             <div className={"flex gap-4 items-center"}>
-                <Link href={"/"}>
+                <Link href={"/"} title={"bibbi"}>
                     <PageLogo className={"fill-s938f"}/>
                 </Link>
             </div>
@@ -61,7 +61,7 @@ function TitledNavigationBar({isMobile}: {isMobile: boolean}) {
     return <div className={"flex justify-between items-center w-screen text-white py-3.5 px-5 z-20"}>
         <div className={"max-w-screen-xl mx-auto w-full flex flex-row justify-between items-center"}>
             <div className={"flex gap-4 items-center"}>
-                <Link href={"/"}>
+                <Link href={"/"} title={"bibbi"}>
                     <PageLogo className={"fill-s1938f33"}/>
                 </Link>
             </div>
