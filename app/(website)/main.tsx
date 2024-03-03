@@ -94,7 +94,7 @@ function FirstSlide({appDownloadUrl, isMobile}: { appDownloadUrl: string, isMobi
                         생존신고, 삐삐
                     </p>
                     <div className={isMobile? "h-4" : "h-8"}/>
-                    <Link href={appDownloadUrl}>
+                    <Link href={appDownloadUrl} title={"App download"}>
                         <div className={isMobile ? "rounded-3xl bg-a39d px-6 py-4 w-fit" : "rounded-3xl bg-a39d px-8 py-6 w-fit"}>
                             <div className={isMobile ? "text-base text-white text-center leading-none font-bold" :
                                 "text-2xl text-white text-center leading-none font-bold"}>
@@ -448,10 +448,10 @@ function TotoSlide({isMobile}: { isMobile: boolean }) {
         </div>
         <div className={"flex flex-row justify-center items-center pt-8 gap-3"}>
             <Link
-                href="https://play.google.com/store/apps/details?id=com.no5ing.bbibbi&pli=1">
+                href="https://play.google.com/store/apps/details?id=com.no5ing.bbibbi&pli=1" title={"Go PlayStore"}>
                 <Image height={isMobile ? 300 : 400} width={isMobile ? 150 : 200} src="/googleplay.png" alt={"playstore"}/>
             </Link>
-            <Link href="https://apps.apple.com/kr/app/bibbi/id6475082088">
+            <Link href="https://apps.apple.com/kr/app/bibbi/id6475082088" title={"Go AppStore"}>
                 <Image height={isMobile ? 300 : 400} width={isMobile ? 150 : 200} src="/appstore.png" alt={"appstore"}/>
             </Link>
         </div>

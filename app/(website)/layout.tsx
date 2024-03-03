@@ -32,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="kr">
       <head>
+        <link rel="preload" as="font" href="https://cdn.jsdelivr.net" />
         <ArticleJsonLd
           useAppDir={true}
           url="https://bibbi.app"

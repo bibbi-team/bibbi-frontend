@@ -48,7 +48,7 @@ function FullNavigationBar({appDownloadUrl, isMobile}: {appDownloadUrl: string, 
                 </Link>
             </div>
             <div className={"flex gap-4 items-center"}>
-                {isMobile ? <Link href={appDownloadUrl}>
+                {isMobile ? <Link href={appDownloadUrl} title={"app download"}>
                     <AppDownloadButton/>
                 </Link>: <NavigationBarLinks isFull={true}/> }
             </div>
@@ -76,9 +76,9 @@ function TitledNavigationBar({isMobile}: {isMobile: boolean}) {
 function NavigationBarLinks({isFull}: {isFull: boolean}) {
     return <div className={"inline"}>
         <ul className={isFull ? "flex flex-row gap-x-8 text-slate-50 text-lg font-light" : "flex flex-row gap-x-8 text-black text-lg font-medium"}>
-            <li><Link href={"/"}>소개 페이지</Link></li>
-            <li><Link href={"/0ed00a05cf74414898b8dbff7614683f"}>공지사항</Link></li>
-            <li><Link href={"/download"}>다운로드</Link></li>
+            <li><Link href={"/"} title={"about"}>소개 페이지</Link></li>
+            <li><Link href={"/0ed00a05cf74414898b8dbff7614683f"} title={"notice"}>공지사항</Link></li>
+            <li><Link href={"/download"} title={"download"}>다운로드</Link></li>
         </ul>
     </div>
 }
