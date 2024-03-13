@@ -1,9 +1,12 @@
+"use client";
 import InstagramIcon from '@/assets/instagram.svg';
 import GithubIcon from '@/assets/github.svg';
 import BehanceIcon from '@/assets/behance.svg';
 import Link from "next/link";
+import {useViewPortDetector} from "@/components/WindowDimensions";
 
 export default function FooterBar() {
+  const isMobile = useViewPortDetector();
     return (
         <footer className={"w-full bg-2F2F32 py-6 px-6 text-8c8c8e "}>
             <div className={"flex flex-col justify-center items-start max-w-screen-xl mx-auto w-full"}>
@@ -16,7 +19,8 @@ export default function FooterBar() {
                     <div className={"text-xs"}>55ing.team@gmail.com</div>
                 </div>
                 <div className={"h-7"}/>
-                <div className={"flex flex-col justify-start text-xs gap-1.5 underline"}>
+                <div className={isMobile ? "flex flex-col justify-start text-xs gap-1.5 underline" :
+                "flex flex-row text-xs gap-2 underline"}>
                     <Link href={"/0ed00a05cf74414898b8dbff7614683f"} title={"update"}>
                         <p>업데이트 소식</p>
                     </Link>
@@ -27,6 +31,9 @@ export default function FooterBar() {
                         <p>개인정보 처리방침</p>
                     </Link>
                 </div>
+              <div className={"text-xs pt-2"}>
+                Copyright © 2024 Bibbi-Team. All rights reserved.
+              </div>
             </div>
         </footer>
     );
