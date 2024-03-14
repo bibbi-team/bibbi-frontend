@@ -7,7 +7,7 @@ import LandingSecondBibbi from "@/assets/landing_second_bibbi.svg?url";
 import BibbiPhoneSample from "@/assets/bibbi_phone_sample.png"
 import BibbiReportSample from "@/assets/bibbi_report_sample.png"
 import BibbiShareSample from "@/assets/bibbi_share_sample.png"
-import BibbiCalling from "@/assets/bibbi_calling.svg?url";
+import BibbiCalling from "@/assets/bibbi_calling.png";
 import BibbiCi from "@/assets/bibbi_ci.svg?url";
 import ShiningBibbi from "@/assets/shining_bibbi.svg?url";
 import YummyFood from "@/assets/yummy_food.png";
@@ -71,10 +71,11 @@ export default function Main() {
 function FirstSlide({appDownloadUrl, isMobile}: { appDownloadUrl: string, isMobile: boolean }) {
     return (<div className={"flex flex-col justify-between items-center h-dvh w-screen bg-yellow-100 text-black pt-16 "}
                  style={{
-                     background: "url('/bibbi_repeatable_background.svg')",
+                     background: "url('/infinite_bibbi.png')",
                      backgroundSize: "auto 100%",
                      backgroundPosition: "center",
-                     height: "100svh"
+                     height: "100svh",
+                     backgroundColor: "#F5F378",
                  }}>
         <div className={"grow"}>
             <motion.div
@@ -107,7 +108,7 @@ function FirstSlide({appDownloadUrl, isMobile}: { appDownloadUrl: string, isMobi
             </motion.div>
         </div>
         <div>
-            <Image src={BibbiCalling} alt={"bibbi_hi"}/>
+            <Image src={BibbiCalling} alt={"bibbi_hi"} width={278}/>
         </div>
 
     </div>)
@@ -404,7 +405,8 @@ function Las2tSlide({isMobile}: { isMobile: boolean }) {
 
 
 function LastSlide({isMobile}: { isMobile: boolean }) {
-    return (<div className={"flex flex-col justify-between items-center w-screen text-white bg-353538 z-10"}
+    return (<div className={isMobile ? "flex flex-col justify-between items-center w-screen text-white bg-353538 z-10":
+    "flex flex-row justify-center items-center w-screen text-white bg-353538 z-10"}
     >
         <div className={isMobile? "font-extrabold text-2xl text-center  pt-16 px-8" : "font-semibold text-4xl text-center  pt-16 px-8"}>
             <p>
