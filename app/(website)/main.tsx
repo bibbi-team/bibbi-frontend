@@ -245,10 +245,10 @@ function FifthSlide({isMobile}: { isMobile: boolean}) {
                         단순히 공유하고 싶은
                     </p>
                     <p>
-                        일상을 찍고,
+                        일상을 <span className={"text-f5f378"}>찍고</span>,
                     </p>
                     <p>
-                        업로드만 하면 끝이에요.
+                        <span className={"text-ff99b1"}>업로드</span> 하면 끝이에요.
                     </p>
                 </div>
                 <div>
@@ -405,28 +405,37 @@ function Las2tSlide({isMobile}: { isMobile: boolean }) {
 
 
 function LastSlide({isMobile}: { isMobile: boolean }) {
-    return (<div className={isMobile ? "flex flex-col justify-between items-center w-screen text-white bg-353538 z-10":
-    "flex flex-row justify-center items-center w-screen text-white bg-353538 z-10"}
-    >
-        <div className={isMobile? "font-extrabold text-2xl text-center  pt-16 px-8" : "font-semibold text-4xl text-center  pt-16 px-8"}>
-            <p>
-                하루에 10초만 투자하고
-            </p>
-            <p className={"text-f5f378"}>
-                가족과 가까워지세요
-            </p>
-        </div>
-        <div className={"z-0"} style={{
-            background: "url('/floating_bibbi.svg')",
-            backgroundSize: "auto 100%",
+    return (
+        <div className={"w-screen"} style={{
+            background: "linear-gradient(to bottom, rgb(53 53 56 / 100%), rgb(53 53 56 / 50%)), url('/bibbi_matrix_light.svg')",
+           // backgroundSize: "auto 100%",
             backgroundPosition: "cover",
+            backgroundColor: "#353538",
             opacity: 0.8,
             zIndex: 0,
-        }}>
-            <Image className={"w-full"} src={BibbiPhoneSample} alt={"bibbi_hi"}/>
-        </div>
+        }}
+    >
+            <div className={"max-w-screen-xl mx-auto w-full"}>
+                <div className={isMobile ? "flex flex-col justify-between items-center text-white w-full  z-10":
+                    "flex flex-row justify-center items-center w-full text-white z-10"}>
+                    <div className={isMobile? "font-extrabold text-2xl text-center  pt-16 px-8" : "font-semibold text-4xl text-center  pt-16 px-8"}>
+                        <p>
+                            하루에 10초만 투자하고
+                        </p>
+                        <p className={"text-f5f378"}>
+                            가족과 가까워지세요
+                        </p>
+                    </div>
+                    <div className={"z-0"} >
+                        <Image style={{
+                            width: isMobile ? "100%" : "36rem",
+                        }} src={BibbiPhoneSample} alt={"bibbi_hi"}/>
+                    </div>
+                </div>
 
-    </div>)
+            </div>
+    </div>
+    )
 }
 
 
