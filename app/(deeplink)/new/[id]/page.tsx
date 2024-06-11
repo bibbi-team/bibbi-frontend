@@ -22,7 +22,7 @@ export default function Page() {
       inviterName: string,
       survivalCount: number,
       isRequesterJoinedFamily: boolean
-  }>(null);
+  } | null>(null);
   useEffect(() => {
       analytics;
     const detectPlatform = () => {
@@ -58,12 +58,14 @@ export default function Page() {
       const arr = [];
       const dataSize = viewData?.familyMembersProfileImageUrls?.length ?? 0;
       const remainSize = viewData?.extraFamilyMembersCount ?? 0;
-    for(let i = 0; i < viewData?.familyMembersProfileImageUrls?.length; i++) {
-        const item = viewData.familyMembersProfileImageUrls[i];
-        arr.push(
+      if(viewData) {
+        for(let i = 0; i < viewData?.familyMembersProfileImageUrls?.length; i++) {
+          const item = viewData.familyMembersProfileImageUrls[i];
+          arr.push(
             <CircleImage imageUrl={item} index={i}/>
-        )
-    }
+          )
+        }
+      }
     return <div style={{
         display: 'block',
         marginLeft: dataSize * 40,
@@ -108,7 +110,7 @@ export default function Page() {
           gap: '16px',
       }}>
           {
-              viewData?.survivalCount > 0 && <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '3px'}}>
+              viewData && viewData?.survivalCount > 0 && <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: '3px'}}>
                   <Fire style={{display: 'inline-block'}}/>
                   <span style={{color: '#B2B2B4'}}>이미 <span style={{color: '#F5F378'}}>{viewData?.survivalCount}</span>번의 생존신고를 완료했어요</span>
               </div>
