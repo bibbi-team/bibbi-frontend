@@ -79,7 +79,7 @@ export default function Page() {
 
     return <div style={{
         display: 'block',
-        marginLeft: maxVal * 40,
+        marginLeft: remainSize > 0 ? maxVal * 40 : 0,
     }}>
         {arr}
         {remainSize > 0 && <RemainBox remain={remainSize} size={maxVal}/>}
