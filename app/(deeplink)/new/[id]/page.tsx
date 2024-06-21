@@ -34,7 +34,7 @@ export default function Page() {
       return "unknown";
     }
 
-    axios.get('https://dev.api.no5ing.kr/v1/view/family-invite/' + id).then((res) => {
+    axios.get('https://api.no5ing.kr/v1/view/family-invite/' + id).then((res) => {
         const data = res.data;
         if(data?.error) {
          //   alert(data.error);
