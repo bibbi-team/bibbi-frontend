@@ -17,6 +17,7 @@ export default function Page() {
       familyId: string,
       familyName: string,
       familyMembersProfileImageUrls: string[],
+      familyMemberNames: string[],
       extraFamilyMembersCount: number,
       familyMembersCount: number,
       inviterName: string,
@@ -59,13 +60,22 @@ export default function Page() {
       const dataSize = viewData?.familyMembersProfileImageUrls?.length ?? 0;
       const remainSize = viewData?.extraFamilyMembersCount ?? 0;
       if(viewData) {
-        for(let i = 0; i < viewData?.familyMembersProfileImageUrls?.length; i++) {
-          const item = viewData.familyMembersProfileImageUrls[i];
-          arr.push(
-            <CircleImage imageUrl={item} index={i}/>
-          )
-        }
+          for(let i = 0; i < viewData?.familyMembersProfileImageUrls?.length; i++) {
+              const item = viewData.familyMembersProfileImageUrls[i];
+              if(item != null && item != '') {
+                  arr.push(
+                      <CircleImage imageUrl={item} index={i}/>
+                  )
+              } else {
+                  const name = viewData.familyMemberNames[i];
+                  arr.push(
+                      <NamedBox text={name[0]} size={i}/>
+                  )
+              }
+
+          }
       }
+
     return <div style={{
         display: 'block',
         marginLeft: dataSize * 40,
@@ -77,14 +87,15 @@ export default function Page() {
       <div className={"flex flex-col items-center"}>
           <div className={"h-12"}/>
           <div className={"h-12"}/>
-          <div style={{
+          {viewData?.familyName && viewData.familyName !== '' ? <div style={{
               backgroundColor: '#2F2F32',
               padding: '7px 14px 7px 14px',
               borderRadius: '70px',
               width: 'fit-content',
           }}>
               <a style={{color: '#D3D3D3'}}>{viewData?.familyName}</a>
-          </div>
+          </div>:<></>}
+
           <div className={"h-8"}/>
           <Images/>
           <div className={"h-3"}/>
@@ -171,6 +182,34 @@ function RemainBox({remain, size}: {remain: number, size: number}) {
             fontWeight: 600
         }}>
             +{remain}
+        </div>
+
+    </div>
+}
+
+function NamedBox({text, size}: {text: string, size: number}) {
+    return <div style={{
+        width: '80px',
+        height: '80px',
+        border: '6px solid #242427',
+        borderRadius: '40px',
+        backgroundColor: '#353538',
+        display: 'inline-block',
+        position: 'relative',
+        left: size * -40,
+    }}>
+        <div style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: '#D3D3D3',
+            fontSize: '24px',
+            fontWeight: 600
+        }}>
+            {text}
         </div>
 
     </div>
