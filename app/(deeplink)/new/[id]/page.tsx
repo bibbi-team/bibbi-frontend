@@ -58,9 +58,10 @@ export default function Page() {
   const Images = () => {
       const arr = [];
       const dataSize = viewData?.familyMembersProfileImageUrls?.length ?? 0;
+      const maxVal = Math.min(dataSize, 2);
       const remainSize = viewData?.extraFamilyMembersCount ?? 0;
       if(viewData) {
-          for(let i = 0; i < viewData?.familyMembersProfileImageUrls?.length; i++) {
+          for(let i = 0; i < maxVal; i++) {
               const item = viewData.familyMembersProfileImageUrls[i];
               if(item != null && item != '') {
                   arr.push(
@@ -78,7 +79,7 @@ export default function Page() {
 
     return <div style={{
         display: 'block',
-        marginLeft: dataSize * 40,
+        marginLeft: maxVal * 40,
     }}>{arr}
         {remainSize > 0 && <RemainBox remain={remainSize} size={dataSize}/>}
     </div>;
