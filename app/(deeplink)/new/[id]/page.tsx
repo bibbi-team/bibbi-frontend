@@ -80,7 +80,8 @@ export default function Page() {
     return <div style={{
         display: 'block',
         marginLeft: maxVal * 40,
-    }}>{arr}
+    }}>
+        {arr}
         {remainSize > 0 && <RemainBox remain={remainSize} size={dataSize}/>}
     </div>;
   };
@@ -169,7 +170,7 @@ function RemainBox({remain, size}: {remain: number, size: number}) {
         backgroundColor: '#353538',
         display: 'inline-block',
         position: 'relative',
-        left: size * -40,
+        left: 40,
     }}>
         <div style={{
             width: '100%',
