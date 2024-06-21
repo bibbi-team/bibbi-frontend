@@ -82,7 +82,7 @@ export default function Page() {
         marginLeft: maxVal * 40,
     }}>
         {arr}
-        {remainSize > 0 && <RemainBox remain={remainSize} size={dataSize}/>}
+        {remainSize > 0 && <RemainBox remain={remainSize} size={maxVal}/>}
     </div>;
   };
   return <div className={"flex flex-col justify-between items-center h-screen w-screen gap-8"}>
@@ -170,7 +170,7 @@ function RemainBox({remain, size}: {remain: number, size: number}) {
         backgroundColor: '#353538',
         display: 'inline-block',
         position: 'relative',
-        left: 40,
+        left: -40 * size,
     }}>
         <div style={{
             width: '100%',
