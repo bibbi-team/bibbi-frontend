@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title: '삐삐',
   description: '가족 일상공유 어플리케이션',
   openGraph: {
-    title: '삐삐 - 공식 홈페이지',
-    description: '하루 한 번, 가족에게 보내는 생존신고',
+    title: '삐삐 - 가족 초대 링크가 도착했어요',
+    description: '간단한 일상공유로 가족과 가까워지세요',
     url: 'https://bibbi.app',
     siteName: 'BbiBbi',
     images: [
@@ -34,19 +34,19 @@ export default function RootLayout({
       <head>
         <link rel="preload" as="font" href="https://cdn.jsdelivr.net" />
         <ArticleJsonLd
-          useAppDir={true}
-          url="https://bibbi.app"
-          title="삐삐 - 공식 홈페이지"
-          authorName={"bbibbi"}
-          datePublished={
-            "2023-01-01T00:00:00+09:00"
-          }
-          description={"하루 한 번, 가족에게 보내는 생존신고"}
-          images={
-            [
-              "https://bibbi.app/og_image.png"
-            ]
-          }
+            useAppDir={true}
+            url="https://bibbi.app"
+            title="삐삐 - 가족 초대 링크가 도착했어요"
+            authorName={"bbibbi"}
+            datePublished={
+              "2023-01-01T00:00:00+09:00"
+            }
+            description={"간단한 일상공유로 가족과 가까워지세요"}
+            images={
+              [
+                "https://bibbi.app/og_image.png"
+              ]
+            }
         />
         <GoogleAnalytics/>
       </head>
