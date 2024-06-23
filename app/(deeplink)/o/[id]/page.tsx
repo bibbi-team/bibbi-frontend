@@ -36,6 +36,15 @@ export default function Page() {
       return "unknown";
     }
 
+      const platform = detectPlatform();
+      setPlatform(platform);
+      if(platform == "ios" && !retry) {
+          setTimeout(() => {
+              location.href = 'https://link.no5ing.kr/links/'+id;
+          }, 50);
+          return;
+      }
+
     axios.get('https://api.no5ing.kr/v1/view/family-invite/' + id).then((res) => {
         const data = res.data;
         setViewData(data);
@@ -48,8 +57,7 @@ export default function Page() {
         }
     });
 
-    const platform = detectPlatform();
-    setPlatform(platform);
+
   }, []);
   const handleRoute = () => {
     if(platform == "ios") {
