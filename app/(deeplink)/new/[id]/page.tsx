@@ -2,6 +2,7 @@
 import {useEffect, useState} from "react";
 import Image from "next/image";
 import Fire from '@/public/fire.svg'
+import VerySad from '@/public/very_sad.svg'
 import {usePathname, useSearchParams} from "next/navigation";
 import axios from "axios";
 import {analytics} from "@/firebase/firebase";
@@ -24,6 +25,7 @@ export default function Page() {
       survivalCount: number,
       isRequesterJoinedFamily: boolean
   } | null>(null);
+  const [errorPhase, setErrorPhase] = useState<'NONE' | 'NOT_FOUND' | 'ETC'>('NONE');
   useEffect(() => {
       analytics;
     const detectPlatform = () => {
@@ -36,17 +38,18 @@ export default function Page() {
 
     axios.get('https://api.no5ing.kr/v1/view/family-invite/' + id).then((res) => {
         const data = res.data;
-        if(data?.error) {
-         //   alert(data.error);
-            return;
-        }
         setViewData(data);
-
+    }, (err) => {
+        const code = err.response?.data?.code
+        if(code && code == 'DL0001') {
+            setErrorPhase('NOT_FOUND');
+        } else {
+            setErrorPhase('ETC');
+        }
     });
 
     const platform = detectPlatform();
     setPlatform(platform);
-
   }, []);
   const handleRoute = () => {
     if(platform == "ios") {
@@ -65,12 +68,12 @@ export default function Page() {
               const item = viewData.familyMembersProfileImageUrls[i];
               if(item != null && item != '') {
                   arr.push(
-                      <CircleImage imageUrl={item} index={i}/>
+                      <CircleImage key={i} imageUrl={item} index={i}/>
                   )
               } else {
                   const name = viewData.familyMemberNames[i];
                   arr.push(
-                      <NamedBox text={name[0]} size={i}/>
+                      <NamedBox key={i}  text={name[0]} size={i}/>
                   )
               }
 
@@ -85,6 +88,49 @@ export default function Page() {
         {remainSize > 0 && <RemainBox remain={remainSize} size={maxVal}/>}
     </div>;
   };
+  if(errorPhase == 'NOT_FOUND') {
+      return <div className={"flex flex-col justify-center items-center h-screen w-screen gap-2"}>
+          <VerySad/>
+          <div className={"h-6"}/>
+          <a style={{fontSize: '24px', color: '#D3D3D3', fontWeight: 600}}>해당 초대링크를 찾을 수 없어요</a>
+          <a style={{fontSize: '16px', color: '#B2B2B4', fontWeight: 400}}>초대 링크가 만료되었거나, 존재하지 않아요</a>
+      </div>
+  } else if(errorPhase == 'ETC') {
+      return <div className={"flex flex-col justify-between items-center h-screen w-screen gap-8"}>
+          <div className={"flex flex-col items-center"}>
+              <div className={"h-12"}/>
+              <div className={"h-12"}/>
+              <div className={"h-12"}/>
+              <VerySad/>
+              <div className={"h-6"}/>
+              <a style={{fontSize: '24px', color: '#D3D3D3', fontWeight: 600}}>미리보기를 로드할 수 없어요</a>
+              <a style={{fontSize: '16px', color: '#B2B2B4', fontWeight: 400}}>아래 버튼을 눌러 가족 방에 가입해주세요</a>
+          </div>
+
+          <div style={{
+              width: '100%',
+              padding: '12px 12px 24px 12px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '16px',
+          }}>
+              <div style={{
+                  width: '100%',
+                  backgroundColor: '#F5F378',
+                  borderRadius: '100px',
+                  padding: '18px 0 18px 0',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  fontSize: '16px',
+                  fontWeight: 600
+              }} onClick={handleRoute}>
+                  가족 방 입장하기
+              </div>
+          </div>
+      </div>
+  }
   return <div className={"flex flex-col justify-between items-center h-screen w-screen gap-8"}>
       <div className={"flex flex-col items-center"}>
           <div className={"h-12"}/>
@@ -144,8 +190,6 @@ export default function Page() {
             가족 방 입장하기
           </div>
       </div>
-
-
   </div>;
 }
 
