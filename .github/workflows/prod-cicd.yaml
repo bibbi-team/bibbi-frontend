@@ -1,0 +1,69 @@
+name: 프로덕션 워크플로우
+on:
+  push:
+    branches: [ 'main' ]
+
+env:
+  ECR_REPOSITORY_NAME: bibbi-backend-prod
+  ECS_SERVICE: bibbi-backend-prod
+  ECS_CLUSTER: bibbi-cluster-prod
+  ECR_TASK_DEFINITION: bibbi-backend-prod
+
+concurrency:
+  group: production
+
+jobs:
+  prepare-variables:
+    name: 환경변수 준비하기
+    runs-on: ubuntu-latest
+    outputs:
+      ecr-repository-name: ${{ steps.setup-env.outputs.ecr-repository-name }}
+      image-tag: ${{ steps.setup-env.outputs.image-tag }}
+      ecs-service: ${{ env.ECS_SERVICE }}
+      ecs-cluster: ${{ env.ECS_CLUSTER }}
+      ecr-task-definition: ${{ env.ECR_TASK_DEFINITION }}
+    steps:
+      - name: GitHub 에서 레포 받아오기
+        uses: actions/checkout@v3
+
+      - name: 환경변수 출력하기
+        id: setup-env
+        run: |
+          echo "ecr-repository-name=$ECR_REPOSITORY_NAME" >> $GITHUB_OUTPUT
+          echo "image-tag=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "ecs-service=$ECS_SERVICE" >> $GITHUB_OUTPUT
+          echo "ecs-cluster=$ECS_CLUSTER" >> $GITHUB_OUTPUT
+          echo "ecr-task-definition=$ECR_TASK_DEFINITION" >> $GITHUB_OUTPUT
+
+  call-build-workflow:
+    if: github.event_name == 'push'
+    needs: [ prepare-variables ]
+    name: 이미지 빌드
+    uses: ./.github/workflows/build.yaml
+    permissions:
+      id-token: write
+      contents: read
+    with:
+      image-name: no5ing/bibbi-frontend
+      image-tag: ${{ needs.prepare-variables.outputs.image-tag }}
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKER_PASSWORD }}
+
+  call-deploy-workflow:
+    if: github.event_name == 'push'
+    needs: [ prepare-variables, call-build-workflow ]
+    name: ArgoCD로 배포하기
+    uses: ./.github/workflows/deploy-argocd.yaml
+    permissions:
+      contents: write
+    with:
+      argocd-repo-name: bibbi-team/bibbi-argocd-manifest
+      overlay-name: prod
+      service-name: bibbi-frontend
+      image-name: no5ing/bibbi-frontend
+      image-tag: ${{ needs.prepare-variables.outputs.image-tag }}
+      environment: production
+      default-image-name: no5ing/bibbi-frontend
+    secrets:
+      PAT_TOKEN: ${{ secrets.PAT_TOKEN }}

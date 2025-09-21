@@ -61,7 +61,7 @@ jobs:
         uses: 8398a7/action-slack@v3
         with:
           status: custom
-          fields: author, workflowRun, pullRequest
+          fields: author, workflowRun, pullRequests
           custom_payload: |
             {
               attachments: [{
