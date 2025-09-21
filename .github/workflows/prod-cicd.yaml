@@ -47,8 +47,8 @@ jobs:
       image-name: no5ing/bibbi-frontend
       image-tag: ${{ needs.prepare-variables.outputs.image-tag }}
     secrets:
-      DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKER_PASSWORD }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   call-deploy-workflow:
     if: github.event_name == 'push'
